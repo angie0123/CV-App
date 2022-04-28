@@ -83,7 +83,13 @@ class App extends Component {
   }
 
   deleteItemHandler(event) {
-    console.log(event.target.getAttribute('name'));
+    const section = event.target.getAttribute('name');
+    this.setState({
+      CV: {
+        ...this.state.CV,
+        [section]: this.state.CV[section].slice(0, -1),
+      },
+    });
   }
 
   render() {
