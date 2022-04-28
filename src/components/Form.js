@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import General from './General';
-import Education from './Education';
 import Experience from './Experience';
-
+import EducationList from './EducationList';
 class Form extends Component {
   render() {
     const { general, education, experience } = this.props.info;
@@ -10,21 +9,6 @@ class Form extends Component {
     const { companyName, positionTitle, tasks, dateStart, dateEnd } =
       experience;
 
-    const educationAll = education.map((ed) => {
-      const { schoolName, titleOfStudy, dateOfStudyStart, dateofStudyEnd } = ed;
-      return (
-        <li key={ed.id}>
-          <Education
-            id={ed.id}
-            inputChangeHandler={this.props.inputChangeHandler}
-            schoolName={schoolName}
-            titleOfStudy={titleOfStudy}
-            dateOfStudyStart={dateOfStudyStart}
-            dateofStudyEnd={dateofStudyEnd}
-          />
-        </li>
-      );
-    });
     return (
       <form>
         <General
@@ -34,7 +18,7 @@ class Form extends Component {
           phone={phone}
           description={description}
         />
-        <ul>{educationAll}</ul>
+        <EducationList info={education} />
         <Experience
           inputChangeHandler={this.props.inputChangeHandler}
           companyName={companyName}

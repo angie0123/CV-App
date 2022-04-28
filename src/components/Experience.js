@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Subheading from './Subheading';
 class Experience extends Component {
   render() {
     const {
@@ -12,7 +11,6 @@ class Experience extends Component {
     } = this.props;
     return (
       <>
-        <Subheading text="Experience" />
         <input
           type="text"
           name="experience companyName"

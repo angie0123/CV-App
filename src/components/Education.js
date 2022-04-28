@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Subheading from './Subheading';
 class Education extends Component {
   render() {
     const {
@@ -12,7 +11,6 @@ class Education extends Component {
     } = this.props;
     return (
       <>
-        <Subheading text="Education" />
         <input
           type="text"
           name={`education schoolName ${id}`}
