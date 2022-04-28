@@ -29,10 +29,26 @@ class App extends Component {
         },
       },
     };
+    this.inputChangeHandler = this.inputChangeHandler.bind(this);
+  }
+
+  inputChangeHandler(event) {
+    const [section, name] = event.target.name.split(' ');
+    this.setState({
+      CV: {
+        ...this.state.CV,
+        [section]: {
+          ...this.state.CV[section],
+          [name]: event.target.value,
+        },
+      },
+    });
   }
 
   render() {
-    return <Form info={this.state.CV} />;
+    return (
+      <Form info={this.state.CV} inputChangeHandler={this.inputChangeHandler} />
+    );
   }
 }
 

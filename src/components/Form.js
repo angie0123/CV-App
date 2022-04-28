@@ -14,6 +14,7 @@ class Form extends Component {
     return (
       <form>
         <General
+          inputChangeHandler={this.props.inputChangeHandler}
           name={name}
           email={email}
           phone={phone}
