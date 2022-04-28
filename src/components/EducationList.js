@@ -4,8 +4,9 @@ import Subheading from './Subheading';
 
 class EducationList extends Component {
   render() {
-    const educationAll = this.props.info.map((ed) => {
-      const { schoolName, titleOfStudy, dateOfStudyStart, dateofStudyEnd } = ed;
+    const { educationArray, addItemHandler, deleteItemHandler } = this.props;
+    const educationList = educationArray.map((ed) => {
+      const { schoolName, titleOfStudy, dateOfStudyStart, dateOfStudyEnd } = ed;
       return (
         <li key={ed.id}>
           <Education
@@ -14,7 +15,7 @@ class EducationList extends Component {
             schoolName={schoolName}
             titleOfStudy={titleOfStudy}
             dateOfStudyStart={dateOfStudyStart}
-            dateofStudyEnd={dateofStudyEnd}
+            dateOfStudyEnd={dateOfStudyEnd}
           />
         </li>
       );
@@ -22,10 +23,22 @@ class EducationList extends Component {
     return (
       <>
         <Subheading text="Education" />
-        <ul>{educationAll}</ul>
-        <div className="button primary">Add</div>
-        {this.props.info.length > 0 && (
-          <div className="button danger">Delete</div>
+        <ul>{educationList}</ul>
+        <div
+          className="button primary"
+          name="education"
+          onClick={addItemHandler}
+        >
+          Add
+        </div>
+        {educationArray.length > 0 && (
+          <div
+            className="button danger"
+            name="education"
+            onClick={deleteItemHandler}
+          >
+            Delete
+          </div>
         )}
       </>
     );

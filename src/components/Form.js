@@ -4,7 +4,9 @@ import Experience from './Experience';
 import EducationList from './EducationList';
 class Form extends Component {
   render() {
-    const { general, education, experience } = this.props.info;
+    const { general, education, experience } = this.props.CV;
+    const { addItemHandler, deleteItemHandler, inputChangeHandler } =
+      this.props.handlers;
     const { name, email, phone, description } = general;
     const { companyName, positionTitle, tasks, dateStart, dateEnd } =
       experience;
@@ -12,15 +14,20 @@ class Form extends Component {
     return (
       <form>
         <General
-          inputChangeHandler={this.props.inputChangeHandler}
+          inputChangeHandler={inputChangeHandler}
           name={name}
           email={email}
           phone={phone}
           description={description}
         />
-        <EducationList info={education} />
+        <EducationList
+          inputChangeHandler={inputChangeHandler}
+          educationArray={education}
+          addItemHandler={addItemHandler}
+          deleteItemHandler={deleteItemHandler}
+        />
         <Experience
-          inputChangeHandler={this.props.inputChangeHandler}
+          inputChangeHandler={inputChangeHandler}
           companyName={companyName}
           positionTitle={positionTitle}
           tasks={tasks}

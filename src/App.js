@@ -32,6 +32,8 @@ class App extends Component {
       },
     };
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
+    this.addItemHandler = this.addItemHandler.bind(this);
+    this.deleteItemHandler = this.deleteItemHandler.bind(this);
   }
 
   inputChangeHandler(event) {
@@ -58,12 +60,42 @@ class App extends Component {
           },
         };
     this.setState(newState);
-    console.log(newState);
+  }
+
+  addItemHandler(event) {
+    const section = event.target.getAttribute('name');
+    let newItem;
+    if (section === 'education') {
+      newItem = {
+        schoolName: '',
+        titleOfStudy: '',
+        dateOfStudyStart: '',
+        dateOfStudyEnd: '',
+        id: this.state.CV[section].length,
+      };
+    }
+    this.setState({
+      CV: {
+        ...this.state.CV,
+        [section]: this.state.CV[section].concat(newItem),
+      },
+    });
+  }
+
+  deleteItemHandler(event) {
+    console.log(event.target.getAttribute('name'));
   }
 
   render() {
     return (
-      <Form info={this.state.CV} inputChangeHandler={this.inputChangeHandler} />
+      <Form
+        CV={this.state.CV}
+        handlers={{
+          addItemHandler: this.addItemHandler,
+          deleteItemHandler: this.deleteItemHandler,
+          inputChangeHandler: this.inputChangeHandler,
+        }}
+      />
     );
   }
 }

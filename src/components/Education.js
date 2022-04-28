@@ -5,7 +5,7 @@ class Education extends Component {
       schoolName,
       titleOfStudy,
       dateOfStudyStart,
-      dateofStudyEnd,
+      dateOfStudyEnd,
       inputChangeHandler,
       id,
     } = this.props;
@@ -43,7 +43,7 @@ class Education extends Component {
               id="studyDateEnd"
               type="date"
               name={`education dateOfStudyEnd ${id}`}
-              value={dateofStudyEnd}
+              value={dateOfStudyEnd}
               onChange={inputChangeHandler}
             />
           </div>
