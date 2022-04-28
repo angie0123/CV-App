@@ -12,13 +12,15 @@ class App extends Component {
           phone: '',
           description: '',
         },
-        educationList: [],
-        education: {
-          schoolName: '',
-          titleOfStudy: '',
-          dateofStudyStart: '',
-          dateofStudyEnd: '',
-        },
+        education: [
+          {
+            schoolName: '',
+            titleOfStudy: '',
+            dateOfStudyStart: '',
+            dateOfStudyEnd: '',
+            id: 0,
+          },
+        ],
         experienceList: [],
         experience: {
           companyName: '',
@@ -33,16 +35,30 @@ class App extends Component {
   }
 
   inputChangeHandler(event) {
-    const [section, name] = event.target.name.split(' ');
-    this.setState({
-      CV: {
-        ...this.state.CV,
-        [section]: {
-          ...this.state.CV[section],
-          [name]: event.target.value,
-        },
-      },
-    });
+    const [section, name, id] = event.target.name.split(' ');
+    const newState = id
+      ? {
+          CV: {
+            ...this.state.CV,
+            [section]: this.state.CV[section].map((item) => {
+              if (+item.id === +id) {
+                item[name] = event.target.value;
+              }
+              return item;
+            }),
+          },
+        }
+      : {
+          CV: {
+            ...this.state.CV,
+            [section]: {
+              ...this.state.CV[section],
+              [name]: event.target.value,
+            },
+          },
+        };
+    this.setState(newState);
+    console.log(newState);
   }
 
   render() {

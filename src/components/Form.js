@@ -7,10 +7,24 @@ class Form extends Component {
   render() {
     const { general, education, experience } = this.props.info;
     const { name, email, phone, description } = general;
-    const { schoolName, titleOfStudy, dateOfStudyStart, dateofStudyEnd } =
-      education;
     const { companyName, positionTitle, tasks, dateStart, dateEnd } =
       experience;
+
+    const educationAll = education.map((ed) => {
+      const { schoolName, titleOfStudy, dateOfStudyStart, dateofStudyEnd } = ed;
+      return (
+        <li key={ed.id}>
+          <Education
+            id={ed.id}
+            inputChangeHandler={this.props.inputChangeHandler}
+            schoolName={schoolName}
+            titleOfStudy={titleOfStudy}
+            dateOfStudyStart={dateOfStudyStart}
+            dateofStudyEnd={dateofStudyEnd}
+          />
+        </li>
+      );
+    });
     return (
       <form>
         <General
@@ -20,13 +34,7 @@ class Form extends Component {
           phone={phone}
           description={description}
         />
-        <Education
-          inputChangeHandler={this.props.inputChangeHandler}
-          schoolName={schoolName}
-          titleOfStudy={titleOfStudy}
-          dateOfStudyStart={dateOfStudyStart}
-          dateofStudyEnd={dateofStudyEnd}
-        />
+        <ul>{educationAll}</ul>
         <Experience
           inputChangeHandler={this.props.inputChangeHandler}
           companyName={companyName}

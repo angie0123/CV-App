@@ -8,20 +8,21 @@ class Education extends Component {
       dateOfStudyStart,
       dateofStudyEnd,
       inputChangeHandler,
+      id,
     } = this.props;
     return (
       <>
         <Subheading text="Education" />
         <input
           type="text"
-          name="education schoolName"
+          name={`education schoolName ${id}`}
           value={schoolName}
           placeholder="School name"
           onChange={inputChangeHandler}
         />
         <input
           type="text"
-          name="education titleOfStudy"
+          name={`education titleOfStudy ${id}`}
           value={titleOfStudy}
           placeholder="Title of study"
           onChange={inputChangeHandler}
@@ -32,7 +33,7 @@ class Education extends Component {
             <input
               id="studyDateStart"
               type="date"
-              name="education dateOfStudyStart"
+              name={`education dateOfStudyStart ${id}`}
               value={dateOfStudyStart}
               placeholder="Start date"
               onChange={inputChangeHandler}
@@ -43,7 +44,7 @@ class Education extends Component {
             <input
               id="studyDateEnd"
               type="date"
-              name="education dateofStudyEnd"
+              name={`education dateOfStudyEnd ${id}`}
               value={dateofStudyEnd}
               onChange={inputChangeHandler}
             />

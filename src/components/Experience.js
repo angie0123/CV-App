@@ -40,7 +40,7 @@ class Experience extends Component {
             <input
               id="workDateStart"
               type="date"
-              name="education dateStart"
+              name="experience dateStart"
               value={dateStart}
               placeholder="Start date"
               onChange={inputChangeHandler}
@@ -51,7 +51,7 @@ class Experience extends Component {
             <input
               id="workDateEnd"
               type="date"
-              name="education dateEnd"
+              name="experience dateEnd"
               value={dateEnd}
               onChange={inputChangeHandler}
             />
