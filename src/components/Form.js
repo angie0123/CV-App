@@ -5,7 +5,7 @@ import Experience from './Experience';
 
 class Form extends Component {
   render() {
-    const { general, education, experience } = this.props;
+    const { general, education, experience } = this.props.info;
     const { name, email, phone, description } = general;
     const { schoolName, titleOfStudy, dateOfStudyStart, dateofStudyEnd } =
       education;
