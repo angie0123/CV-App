@@ -59,3 +59,30 @@ form textarea {
 input[type='date'] {
   margin-top: 0;
 }
+
+.button {
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button.primary {
+  background-color: rgba(72, 196, 72, 0.7);
+}
+
+.button.danger {
+  background-color: rgba(226, 64, 64, 0.7);
+}
+
+ul li {
+  list-style: none;
+}

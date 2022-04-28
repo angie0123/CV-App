@@ -23,6 +23,10 @@ class EducationList extends Component {
       <>
         <Subheading text="Education" />
         <ul>{educationAll}</ul>
+        <div className="button primary">Add</div>
+        {this.props.info.length > 0 && (
+          <div className="button danger">Delete</div>
+        )}
       </>
     );
   }
