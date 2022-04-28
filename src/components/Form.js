@@ -28,6 +28,7 @@ class Form extends Component {
           dateofStudyEnd={dateofStudyEnd}
         />
         <Experience
+          inputChangeHandler={this.props.inputChangeHandler}
           companyName={companyName}
           positionTitle={positionTitle}
           tasks={tasks}
