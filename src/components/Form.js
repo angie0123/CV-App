@@ -5,11 +5,33 @@ import Experience from './Experience';
 
 class Form extends Component {
   render() {
+    const { general, education, experience } = this.props;
+    const { name, email, phone, description } = general;
+    const { schoolName, titleOfStudy, dateOfStudyStart, dateofStudyEnd } =
+      education;
+    const { companyName, positionTitle, tasks, dateStart, dateEnd } =
+      experience;
     return (
       <form>
-        <General />
-        <Education />
-        <Experience />
+        <General
+          name={name}
+          email={email}
+          phone={phone}
+          description={description}
+        />
+        <Education
+          schoolName={schoolName}
+          titleOfStudy={titleOfStudy}
+          dateOfStudyStart={dateOfStudyStart}
+          dateofStudyEnd={dateofStudyEnd}
+        />
+        <Experience
+          companyName={companyName}
+          positionTitle={positionTitle}
+          tasks={tasks}
+          dateStart={dateStart}
+          dateEnd={dateEnd}
+        />
       </form>
     );
   }

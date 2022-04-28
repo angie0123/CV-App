@@ -16,16 +16,16 @@ class App extends Component {
         education: {
           schoolName: '',
           titleOfStudy: '',
-          dateOfStudyStart: '',
-          dateOfStudyEnd: '',
+          dateofStudyStart: '',
+          dateofStudyEnd: '',
         },
         experienceList: [],
         experience: {
           companyName: '',
           positionTitle: '',
           tasks: '',
-          dateOfEmploymentStart: '',
-          dateOfEmploymentEnd: '',
+          dateStart: '',
+          dateEnd: '',
         },
       },
     };
