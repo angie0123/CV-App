@@ -1,8 +1,54 @@
 import React, { Component } from 'react';
-
+import Subheading from './Subheading';
 class Education extends Component {
   render() {
-    return <div>Education section</div>;
+    const {
+      schoolName,
+      titleOfStudy,
+      dateOfStudyStart,
+      dateofStudyEnd,
+      inputChangeHandler,
+    } = this.props;
+    return (
+      <>
+        <Subheading text="Education" />
+        <input
+          type="text"
+          name="education schoolName"
+          value={schoolName}
+          placeholder="School name"
+          onChange={inputChangeHandler}
+        />
+        <input
+          type="text"
+          name="education titleOfStudy"
+          value={titleOfStudy}
+          placeholder="Title of study"
+          onChange={inputChangeHandler}
+        />
+        <div className="input-container">
+          <label htmlFor="studyDateStart">Date Start</label>
+          <input
+            id="studyDateStart"
+            type="date"
+            name="education dateOfStudyStart"
+            value={dateOfStudyStart}
+            placeholder="Start date"
+            onChange={inputChangeHandler}
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="studyDateEnd">Date End</label>
+          <input
+            id="studyDateEnd"
+            type="date"
+            name="education dateofStudyEnd"
+            value={dateofStudyEnd}
+            onChange={inputChangeHandler}
+          />
+        </div>
+      </>
+    );
   }
 }
 

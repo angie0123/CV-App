@@ -21,6 +21,7 @@ class Form extends Component {
           description={description}
         />
         <Education
+          inputChangeHandler={this.props.inputChangeHandler}
           schoolName={schoolName}
           titleOfStudy={titleOfStudy}
           dateOfStudyStart={dateOfStudyStart}
