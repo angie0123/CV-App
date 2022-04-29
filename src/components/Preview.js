@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class Preview extends Component {
+  getYear(date) {
+    const thisYear = new Date().getFullYear();
+    const dateYear = date.substring(0, 4);
+    return +dateYear === +thisYear ? 'Present' : dateYear;
+  }
   render() {
     const { general, experience, education } = this.props.CV;
     const { name, email, phone, description } = general;
@@ -22,29 +27,20 @@ class Preview extends Component {
           <div className="bold">{schoolName}</div>
           <div className="light">{titleOfStudy}</div>
           <div className="light">
-            {dateOfStudyStart} - {dateOfStudyEnd}
+            {this.getYear(dateOfStudyStart)} - {this.getYear(dateOfStudyEnd)}
           </div>
         </>
       );
     });
 
-    //     experience: [
-    //       {
-    //         companyName: '',
-    //         positionTitle: '',
-    //         tasks: '',
-    //         dateStart: '',
-    //         dateEnd: '',
-    //         id: 0,
-    //       },
-    //     ],
     const experienceList = experience.map((exp) => {
       const { companyName, positionTitle, tasks, dateStart, dateEnd } = exp;
       return (
         <>
           <div className="bold">{companyName}</div>
           <div className="light">
-            {positionTitle} | {dateStart} - {dateEnd}
+            {positionTitle} | {this.getYear(dateStart)} -{' '}
+            {this.getYear(dateEnd)}
           </div>
           <div>{tasks}</div>
         </>

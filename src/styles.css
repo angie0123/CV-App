@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   --bg-color: rgba(153, 165, 83, 0.342);
+  font-family: 'Montserrat', sans-serif;
 }
 body {
   height: 100vh;
@@ -89,4 +90,36 @@ ul li {
 
 .button.submit {
   background-color: rgba(24, 179, 179, 0.849);
+}
+
+.resume {
+  background-color: white;
+  padding: 30px;
+  line-height: 1.5rem;
+  width: 700px;
+  font-size: 0.9rem;
+}
+
+.resume .bold {
+  font-weight: bold;
+}
+
+.resume .light {
+  font-weight: 200;
+}
+
+.resume .large-font {
+  font-size: 3rem;
+  line-height: 3rem;
+}
+
+.resume .header {
+  margin-bottom: 50px;
+  border-bottom: 1px solid grey;
+  padding-bottom: 50px;
+}
+
+.resume .header2 {
+  margin: 20px 0;
+  font-size: 1.2rem;
 }
