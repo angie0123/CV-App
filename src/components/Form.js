@@ -5,8 +5,12 @@ import EducationList from './EducationList';
 class Form extends Component {
   render() {
     const { general, education, experience } = this.props.CV;
-    const { addItemHandler, deleteItemHandler, inputChangeHandler } =
-      this.props.handlers;
+    const {
+      addItemHandler,
+      deleteItemHandler,
+      inputChangeHandler,
+      submitHandler,
+    } = this.props.handlers;
     const { name, email, phone, description } = general;
 
     return (
@@ -30,6 +34,9 @@ class Form extends Component {
           addItemHandler={addItemHandler}
           deleteItemHandler={deleteItemHandler}
         />
+        <div className="button submit" onClick={submitHandler}>
+          Submit
+        </div>
       </form>
     );
   }

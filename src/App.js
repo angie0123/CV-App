@@ -36,6 +36,7 @@ class App extends Component {
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
     this.addItemHandler = this.addItemHandler.bind(this);
     this.deleteItemHandler = this.deleteItemHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
 
   inputChangeHandler(event) {
@@ -104,6 +105,10 @@ class App extends Component {
     });
   }
 
+  submitHandler(event) {
+    console.log('clicked!');
+  }
+
   render() {
     return (
       <Form
@@ -112,6 +117,7 @@ class App extends Component {
           addItemHandler: this.addItemHandler,
           deleteItemHandler: this.deleteItemHandler,
           inputChangeHandler: this.inputChangeHandler,
+          submitHandler: this.submitHandler,
         }}
       />
     );

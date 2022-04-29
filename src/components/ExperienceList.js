@@ -11,7 +11,6 @@ class ExperienceList extends Component {
     } = this.props;
 
     const experienceList = experienceArray.map((exp) => {
-      console.log(exp);
       const { companyName, positionTitle, tasks, dateStart, dateEnd } = exp;
       return (
         <li key={exp.id}>
