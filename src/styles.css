@@ -86,3 +86,7 @@ input[type='date'] {
 ul li {
   list-style: none;
 }
+
+.button.submit {
+  background-color: rgba(24, 179, 179, 0.849);
+}

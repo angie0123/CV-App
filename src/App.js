@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from './components/Form';
+import Preview from './components/Preview';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
           },
         ],
       },
+      displayCV: false,
     };
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
     this.addItemHandler = this.addItemHandler.bind(this);
@@ -105,12 +107,14 @@ class App extends Component {
     });
   }
 
-  submitHandler(event) {
-    console.log('clicked!');
+  submitHandler() {
+    this.setState({
+      displayCV: true,
+    });
   }
 
   render() {
-    return (
+    const form = (
       <Form
         CV={this.state.CV}
         handlers={{
@@ -121,6 +125,8 @@ class App extends Component {
         }}
       />
     );
+    const finalCV = <Preview CV={this.state.CV} />;
+    return <>{this.state.displayCV ? finalCV : form}</>;
   }
 }
 
