@@ -21,14 +21,16 @@ class App extends Component {
             id: 0,
           },
         ],
-        experienceList: [],
-        experience: {
-          companyName: '',
-          positionTitle: '',
-          tasks: '',
-          dateStart: '',
-          dateEnd: '',
-        },
+        experience: [
+          {
+            companyName: '',
+            positionTitle: '',
+            tasks: '',
+            dateStart: '',
+            dateEnd: '',
+            id: 0,
+          },
+        ],
       },
     };
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
@@ -71,6 +73,16 @@ class App extends Component {
         titleOfStudy: '',
         dateOfStudyStart: '',
         dateOfStudyEnd: '',
+        id: this.state.CV[section].length,
+      };
+    }
+    if (section === 'experience') {
+      newItem = {
+        companyName: '',
+        positionTitle: '',
+        tasks: '',
+        dateStart: '',
+        dateEnd: '',
         id: this.state.CV[section].length,
       };
     }

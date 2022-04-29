@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import General from './General';
-import Experience from './Experience';
+import ExperienceList from './ExperienceList';
 import EducationList from './EducationList';
 class Form extends Component {
   render() {
@@ -8,8 +8,6 @@ class Form extends Component {
     const { addItemHandler, deleteItemHandler, inputChangeHandler } =
       this.props.handlers;
     const { name, email, phone, description } = general;
-    const { companyName, positionTitle, tasks, dateStart, dateEnd } =
-      experience;
 
     return (
       <form>
@@ -26,13 +24,11 @@ class Form extends Component {
           addItemHandler={addItemHandler}
           deleteItemHandler={deleteItemHandler}
         />
-        <Experience
+        <ExperienceList
           inputChangeHandler={inputChangeHandler}
-          companyName={companyName}
-          positionTitle={positionTitle}
-          tasks={tasks}
-          dateStart={dateStart}
-          dateEnd={dateEnd}
+          experienceArray={experience}
+          addItemHandler={addItemHandler}
+          deleteItemHandler={deleteItemHandler}
         />
       </form>
     );

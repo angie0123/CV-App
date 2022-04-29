@@ -8,26 +8,27 @@ class Experience extends Component {
       dateStart,
       dateEnd,
       inputChangeHandler,
+      id,
     } = this.props;
     return (
       <>
         <input
           type="text"
-          name="experience companyName"
+          name={`experience companyName ${id}`}
           value={companyName}
           placeholder="Company Name"
           onChange={inputChangeHandler}
         />
         <input
           type="text"
-          name="experience positionTitle"
+          name={`experience positionTitle ${id}`}
           value={positionTitle}
           placeholder="Position Title"
           onChange={inputChangeHandler}
         />
         <input
           type="text"
-          name="experience tasks"
+          name={`experience tasks ${id}`}
           value={tasks}
           placeholder="Tasks"
           onChange={inputChangeHandler}
@@ -38,7 +39,7 @@ class Experience extends Component {
             <input
               id="workDateStart"
               type="date"
-              name="experience dateStart"
+              name={`experience dateStart ${id}`}
               value={dateStart}
               placeholder="Start date"
               onChange={inputChangeHandler}
@@ -49,7 +50,7 @@ class Experience extends Component {
             <input
               id="workDateEnd"
               type="date"
-              name="experience dateEnd"
+              name={`experience dateEnd ${id}`}
               value={dateEnd}
               onChange={inputChangeHandler}
             />
