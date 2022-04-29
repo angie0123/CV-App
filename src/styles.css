@@ -4,20 +4,38 @@
   box-sizing: border-box;
   --bg-color: rgba(153, 165, 83, 0.342);
   font-family: 'Montserrat', sans-serif;
+  --box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  --nav-color: rgba(24, 179, 179, 0.849);
 }
-body {
-  height: 100vh;
+#root {
   background: var(--bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* NAV SECTION */
+
+nav {
+  height: 8vh;
+  width: 100vw;
+  background-color: var(--nav-color);
+  padding: 20px 0 20px 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 30px;
+  color: white;
+}
+
+/* FORM SECTION */
+
 form {
   background-color: rgb(187, 187, 187);
   padding: 30px;
-  width: 80vw;
+  width: 700px;
   border-radius: 8px;
+  box-shadow: var(--box-shadow);
 }
 
 .subheading {
@@ -38,6 +56,11 @@ form textarea {
   margin-top: 12px;
 }
 
+form input:focus,
+form textarea:focus {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
 .dates-container {
   display: flex;
   column-gap: 30px;
@@ -52,7 +75,7 @@ form textarea {
 }
 
 .input-container label {
-  width: 100px;
+  width: 117px;
   font-size: 0.9rem;
   font-weight: bold;
 }
@@ -70,6 +93,7 @@ input[type='date'] {
   font-weight: bold;
   font-size: 0.9rem;
   margin-top: 10px;
+  box-shadow: var(--box-shadow);
 }
 
 .button:hover {
@@ -92,12 +116,16 @@ ul li {
   background-color: rgba(24, 179, 179, 0.849);
 }
 
+/* RESUME SECTION */
+
 .resume {
   background-color: white;
   padding: 30px;
   line-height: 1.5rem;
   width: 700px;
   font-size: 0.9rem;
+  min-height: 80vh;
+  box-shadow: var(--box-shadow);
 }
 
 .resume .bold {
@@ -123,4 +151,8 @@ ul li {
   margin-top: 40px;
   margin-bottom: 20px;
   font-size: 1.2rem;
+}
+
+.button.prev {
+  background-color: rgba(226, 64, 64, 0.7);
 }

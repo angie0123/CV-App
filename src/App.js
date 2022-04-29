@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Form from './components/Form';
 import Preview from './components/Preview';
-
+import Nav from './components/Nav';
+import Footer from './components/Footer';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -133,7 +134,13 @@ class App extends Component {
         <Preview CV={this.state.CV} />
       </>
     );
-    return <>{this.state.displayCV ? finalCV : form}</>;
+    return (
+      <>
+        <Nav />
+        {this.state.displayCV ? finalCV : form}
+        <Footer />
+      </>
+    );
   }
 }
 
