@@ -50,10 +50,18 @@ class Preview extends Component {
       <>
         <div className="resume">
           {generalSection}
-          <div className="header2">Education</div>
-          {educationList}
-          <div className="header2">Experience</div>
-          {experienceList}
+          {education.length > 0 && (
+            <>
+              <div className="header2">Education</div>
+              {educationList}
+            </>
+          )}
+          {experience.length > 0 && (
+            <>
+              <div className="header2">Experience</div>
+              {experienceList}
+            </>
+          )}
         </div>
       </>
     );

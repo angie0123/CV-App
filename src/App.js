@@ -38,7 +38,7 @@ class App extends Component {
     this.inputChangeHandler = this.inputChangeHandler.bind(this);
     this.addItemHandler = this.addItemHandler.bind(this);
     this.deleteItemHandler = this.deleteItemHandler.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
+    this.togglePreview = this.togglePreview.bind(this);
   }
 
   inputChangeHandler(event) {
@@ -107,9 +107,9 @@ class App extends Component {
     });
   }
 
-  submitHandler() {
+  togglePreview() {
     this.setState({
-      displayCV: true,
+      displayCV: !this.state.displayCV,
     });
   }
 
@@ -121,11 +121,18 @@ class App extends Component {
           addItemHandler: this.addItemHandler,
           deleteItemHandler: this.deleteItemHandler,
           inputChangeHandler: this.inputChangeHandler,
-          submitHandler: this.submitHandler,
+          submitHandler: this.togglePreview,
         }}
       />
     );
-    const finalCV = <Preview CV={this.state.CV} />;
+    const finalCV = (
+      <>
+        <div className="button prev" onClick={this.togglePreview}>
+          Edit
+        </div>
+        <Preview CV={this.state.CV} />
+      </>
+    );
     return <>{this.state.displayCV ? finalCV : form}</>;
   }
 }
