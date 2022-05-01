@@ -1,74 +1,63 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Form from './components/Form';
 import Preview from './components/Preview';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      CV: {
-        general: {
-          name: '',
-          email: '',
-          phone: '',
-          description: '',
-        },
-        education: [
-          {
-            schoolName: '',
-            titleOfStudy: '',
-            dateOfStudyStart: '',
-            dateOfStudyEnd: '',
-            id: 0,
-          },
-        ],
-        experience: [
-          {
-            companyName: '',
-            positionTitle: '',
-            tasks: '',
-            dateStart: '',
-            dateEnd: '',
-            id: 0,
-          },
-        ],
+const App = () => {
+  const initialCV = {
+    general: {
+      name: '',
+      email: '',
+      phone: '',
+      description: '',
+    },
+    education: [
+      {
+        schoolName: '',
+        titleOfStudy: '',
+        dateOfStudyStart: '',
+        dateOfStudyEnd: '',
+        id: 0,
       },
-      displayCV: false,
-    };
-    this.inputChangeHandler = this.inputChangeHandler.bind(this);
-    this.addItemHandler = this.addItemHandler.bind(this);
-    this.deleteItemHandler = this.deleteItemHandler.bind(this);
-    this.togglePreview = this.togglePreview.bind(this);
-  }
+    ],
+    experience: [
+      {
+        companyName: '',
+        positionTitle: '',
+        tasks: '',
+        dateStart: '',
+        dateEnd: '',
+        id: 0,
+      },
+    ],
+  };
 
-  inputChangeHandler(event) {
+  const [CV, setCV] = useState(initialCV);
+  const [displayCV, setDisplayCV] = useState(false);
+
+  const inputChangeHandler = (event) => {
     const [section, name, id] = event.target.name.split(' ');
     const newState = id
       ? {
-          CV: {
-            ...this.state.CV,
-            [section]: this.state.CV[section].map((item) => {
-              if (+item.id === +id) {
-                item[name] = event.target.value;
-              }
-              return item;
-            }),
-          },
+          ...CV,
+          [section]: CV[section].map((item) => {
+            if (+item.id === +id) {
+              item[name] = event.target.value;
+            }
+            return item;
+          }),
         }
       : {
-          CV: {
-            ...this.state.CV,
-            [section]: {
-              ...this.state.CV[section],
-              [name]: event.target.value,
-            },
+          ...CV,
+          [section]: {
+            ...CV[section],
+            [name]: event.target.value,
           },
         };
-    this.setState(newState);
-  }
+    setCV(newState);
+  };
 
-  addItemHandler(event) {
+  const addItemHandler = (event) => {
     const section = event.target.getAttribute('name');
     let newItem;
     if (section === 'education') {
@@ -77,7 +66,7 @@ class App extends Component {
         titleOfStudy: '',
         dateOfStudyStart: '',
         dateOfStudyEnd: '',
-        id: this.state.CV[section].length,
+        id: CV[section].length,
       };
     }
     if (section === 'experience') {
@@ -87,61 +76,52 @@ class App extends Component {
         tasks: '',
         dateStart: '',
         dateEnd: '',
-        id: this.state.CV[section].length,
+        id: CV[section].length,
       };
     }
-    this.setState({
-      CV: {
-        ...this.state.CV,
-        [section]: this.state.CV[section].concat(newItem),
-      },
+    setCV({
+      ...CV,
+      [section]: CV[section].concat(newItem),
     });
-  }
-
-  deleteItemHandler(event) {
+  };
+  const deleteItemHandler = (event) => {
     const section = event.target.getAttribute('name');
-    this.setState({
-      CV: {
-        ...this.state.CV,
-        [section]: this.state.CV[section].slice(0, -1),
-      },
+    setCV({
+      ...CV,
+      [section]: CV[section].slice(0, -1),
     });
-  }
+  };
+  const togglePreview = () => {
+    setDisplayCV(!displayCV);
+  };
 
-  togglePreview() {
-    this.setState({
-      displayCV: !this.state.displayCV,
-    });
-  }
+  const form = (
+    <Form
+      CV={CV}
+      handlers={{
+        addItemHandler,
+        deleteItemHandler,
+        inputChangeHandler,
+        submitHandler: togglePreview,
+      }}
+    />
+  );
+  const finalCV = (
+    <>
+      <div className="button prev" onClick={togglePreview}>
+        Edit
+      </div>
+      <Preview CV={CV} />
+    </>
+  );
 
-  render() {
-    const form = (
-      <Form
-        CV={this.state.CV}
-        handlers={{
-          addItemHandler: this.addItemHandler,
-          deleteItemHandler: this.deleteItemHandler,
-          inputChangeHandler: this.inputChangeHandler,
-          submitHandler: this.togglePreview,
-        }}
-      />
-    );
-    const finalCV = (
-      <>
-        <div className="button prev" onClick={this.togglePreview}>
-          Edit
-        </div>
-        <Preview CV={this.state.CV} />
-      </>
-    );
-    return (
-      <>
-        <Nav />
-        {this.state.displayCV ? finalCV : form}
-        <Footer />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Nav />
+      {displayCV ? finalCV : form}
+      <Footer />
+    </>
+  );
+};
 
 export default App;

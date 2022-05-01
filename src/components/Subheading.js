@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Subheading extends Component {
-  render() {
-    return <div className="subheading">{this.props.text} </div>;
-  }
-}
+const Subheading = (props) => {
+  return <div className="subheading">{props.text} </div>;
+};
 
 export default Subheading;
